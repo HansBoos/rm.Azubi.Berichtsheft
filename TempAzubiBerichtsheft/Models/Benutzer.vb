@@ -5,6 +5,8 @@
         Public Property Rolle As String
         Public Property LoginDaten As String
 
+        Public Property PLZ As String
+
         Public Sub New(benutzerID As Integer, name As String, rolle As String, loginDaten As String)
             Me.BenutzerID = benutzerID
             Me.Name = name
