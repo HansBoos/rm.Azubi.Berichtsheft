@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "TempAzubiBerichtsheft/1.0.0": {
+        "dependencies": {
+          "PDFNet": "10.3.8.2549"
+        },
+        "runtime": {
+          "TempAzubiBerichtsheft.dll": {}
+        }
+      },
+      "PDFNet/10.3.8.2549": {
+        "runtime": {
+          "PDFNet.dll": {
+            "assemblyVersion": "10.3.8.2549",
+            "fileVersion": "10.3.8.2549"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TempAzubiBerichtsheft/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PDFNet/10.3.8.2549": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
