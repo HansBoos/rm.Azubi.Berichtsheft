@@ -9,9 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="PDFNet">
-      <HintPath>..\..\..\..\..\..\x\lib\x64\apryse10\PDFNet.dll</HintPath>
-    </Reference>
+    <PackageReference Include="DevExpress.Win.Design.de" Version="24.1.3" />
   </ItemGroup>
 
   <!--<ItemGroup>
