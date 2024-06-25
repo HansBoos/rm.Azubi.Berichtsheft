@@ -49,7 +49,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 19,
+          "SelectedChildIndex": 20,
           "Children": [
             {
               "$type": "Bookmark",
@@ -96,6 +96,10 @@
               "Name": "ST:14:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "MainViewModel.vb",
@@ -105,8 +109,7 @@
               "RelativeToolTip": "TempAzubiBerichtsheft\\ViewModels\\MainViewModel.vb",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-06-24T12:36:34.955Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-24T12:36:34.955Z"
             },
             {
               "$type": "Document",
@@ -118,8 +121,7 @@
               "RelativeToolTip": "TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003380|",
-              "WhenOpened": "2024-06-24T15:28:48.956Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-24T15:28:48.956Z"
             },
             {
               "$type": "Document",
@@ -131,8 +133,7 @@
               "RelativeToolTip": "TempAzubiBerichtsheft\\Models\\PdfDocumentProcessor.vb",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-06-25T14:53:07.242Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-25T14:53:07.242Z"
             },
             {
               "$type": "Document",
@@ -144,8 +145,7 @@
               "RelativeToolTip": "TempAzubiBerichtsheft\\Views\\LoginView.vb",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4AAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-06-24T12:39:40.58Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-24T12:39:40.58Z"
             },
             {
               "$type": "Document",
@@ -156,8 +156,7 @@
               "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj",
               "RelativeToolTip": "TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003380|",
-              "WhenOpened": "2024-06-25T08:59:25.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-25T08:59:25.171Z"
             },
             {
               "$type": "Document",
@@ -169,8 +168,7 @@
               "RelativeToolTip": "TempAzubiBerichtsheft\\My Project\\Application.Designer.vb",
               "ViewState": "AQIAABwAAAAAAAAAAAAywCMAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-06-25T09:28:29.097Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-25T09:28:29.097Z"
             },
             {
               "$type": "Document",
@@ -182,8 +180,7 @@
               "RelativeToolTip": "TempAzubiBerichtsheft\\Models\\Benutzer.vb",
               "ViewState": "AQIAAAIAAAAAAAAAAAA+wAwAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-06-25T11:08:09.556Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-25T11:08:09.556Z"
             },
             {
               "$type": "Document",
@@ -195,8 +192,7 @@
               "RelativeToolTip": "..\\..\\..\\AppData\\Local\\SourceServer\\cfbcad50f90507734ac095c9d75a52d733a17ebeef9c47fc545960f1e02e6b59\\src\\libraries\\System.Private.CoreLib\\src\\Microsoft\\Win32\\SafeHandles\\SafeFileHandle.Windows.cs",
               "ViewState": "AQIAAGMAAAAAAAAAAAAhwHEAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T13:01:00.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-25T13:01:00.813Z"
             },
             {
               "$type": "Document",
@@ -221,8 +217,7 @@
               "RelativeToolTip": "TempAzubiBerichtsheft\\ViewModels\\PdfViewModel.vb",
               "ViewState": "AQIAABYAAAAAAAAAAADwvycAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-06-25T15:11:43.149Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-25T15:11:43.149Z"
             }
           ]
         }
