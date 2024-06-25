@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\views\\loginview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\views\\loginview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\views\\mainview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\views\\mainview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\tempazubiberichtsheft.vbproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\tempazubiberichtsheft.vbproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\views\\loginview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\views\\loginview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\viewmodels\\mainviewmodel.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 14,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -85,25 +85,21 @@
               "Name": "ST:14:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{99b8fa2f-ab90-4f57-9c32-949f146f1914}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "LoginView.vb",
               "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\LoginView.vb",
               "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Views\\LoginView.vb",
               "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\LoginView.vb",
               "RelativeToolTip": "TempAzubiBerichtsheft\\Views\\LoginView.vb",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAcwCAAAAAkAAAA",
+              "ViewState": "AQIAABkAAAAAAAAAAAAUwCAAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2024-06-24T12:39:40.58Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Application.Designer.vb",
               "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\My Project\\Application.Designer.vb",
               "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\My Project\\Application.Designer.vb",
@@ -111,12 +107,11 @@
               "RelativeToolTip": "TempAzubiBerichtsheft\\My Project\\Application.Designer.vb",
               "ViewState": "AQIAAB4AAAAAAAAAAAAQwCcAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-06-24T12:44:37.49Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-24T12:44:37.49Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainView.vb",
               "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\MainView.vb",
               "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Views\\MainView.vb",
@@ -137,8 +132,7 @@
               "RelativeToolTip": "TempAzubiBerichtsheft\\ViewModels\\MainViewModel.vb",
               "ViewState": "AQIAAAoAAAAAAAAAAAAiwCAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-06-24T12:36:34.955Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-24T12:36:34.955Z"
             },
             {
               "$type": "Document",
@@ -150,8 +144,7 @@
               "RelativeToolTip": "TempAzubiBerichtsheft\\Models\\Benutzer.vb",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2024-06-24T12:34:29.781Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-24T12:34:29.781Z"
             },
             {
               "$type": "Document",
@@ -167,16 +160,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TempAzubiBerichtsheft",
+              "DocumentIndex": 3,
+              "Title": "TempAzubiBerichtsheft.vbproj",
               "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj",
               "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj",
               "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj",
               "RelativeToolTip": "TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003380|",
-              "WhenOpened": "2024-06-24T15:28:48.956Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-24T15:28:48.956Z"
             }
           ]
         }
