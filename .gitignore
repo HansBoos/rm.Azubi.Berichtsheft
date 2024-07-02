@@ -1,0 +1,9 @@
+﻿################################################################################
+# Diese .gitignore-Datei wurde von Microsoft(R) Visual Studio automatisch erstellt.
+################################################################################
+
+/.vs/TempAzubiBerichtsheft/FileContentIndex/03056360-78c7-4fef-94f1-ef710df7bc94.vsidx
+/.vs/TempAzubiBerichtsheft/FileContentIndex/1b25e52f-87c9-4f67-bc37-5726fe9c9fd3.vsidx
+/.vs/TempAzubiBerichtsheft/FileContentIndex/20d027a1-1b51-44ca-bcaf-b1f2261b53bb.vsidx
+/.vs/TempAzubiBerichtsheft/FileContentIndex/2324f393-ae1a-4b4c-a0f8-a50b40b4222f.vsidx
+*.vsidx
