@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("TempAzubiBerichtsheft"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a81196cc5f042a71396d83237f87a77ba031aa2"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fada55e94e8f124f528623a7b3b1c89b2c58ad60"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("TempAzubiBerichtsheft"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("TempAzubiBerichtsheft"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _

@@ -3,13 +3,14 @@ Imports System.Windows.Forms
 Imports ramicro7.ui
 Imports System.IO
 Imports System.Drawing
+Imports TempAzubiBerichtsheft.TempAzubiBerichtsheft.ViewModels
 
 Namespace TempAzubiBerichtsheft.Views
     Public Class RegisterView
         Inherits XPForm
         Private benutzerRepository As BenutzerRepository
         Private benutzerList As List(Of Benutzer)
-
+        Private viewModel As RegisterViewModel
 
         Public Sub New(username As String)
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance)
@@ -19,17 +20,14 @@ Namespace TempAzubiBerichtsheft.Views
             Catch ex As Exception
                 MessageBox.Show("Fehler beim Starten der RA-MICRO Runtime: " & ex.Message)
             End Try
+            viewModel = New RegisterViewModel()
             InitializeComponent()
             benutzerRepository = New BenutzerRepository()
             benutzerList = benutzerRepository.LoadBenutzer()
             txtUsername.Text = username
         End Sub
 
-        Public Shared Function GetResourcePath(fileName As String) As String
-            Dim basePath As String = AppDomain.CurrentDomain.BaseDirectory.Replace("\bin\Debug\net8.0-windows\", "")
-            Dim resourcePath As String = Path.Combine(basePath, "Resourcen", fileName)
-            Return resourcePath
-        End Function
+
 
         Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
             Dim username As String = txtUsername.Text
@@ -84,7 +82,7 @@ Namespace TempAzubiBerichtsheft.Views
             '
             'txtUsername
             '
-            Me.txtUsername.Location = New System.Drawing.Point(12, 25)
+            Me.txtUsername.Location = New System.Drawing.Point(12, 45)
             Me.txtUsername.Name = "txtUsername"
             Me.txtUsername.ReadOnly = True
             Me.txtUsername.Size = New System.Drawing.Size(200, 20)
@@ -92,7 +90,7 @@ Namespace TempAzubiBerichtsheft.Views
             '
             'txtPassword
             '
-            Me.txtPassword.Location = New System.Drawing.Point(12, 64)
+            Me.txtPassword.Location = New System.Drawing.Point(12, 84)
             Me.txtPassword.Name = "txtPassword"
             Me.txtPassword.PasswordChar = "*"c
             Me.txtPassword.Size = New System.Drawing.Size(200, 20)
@@ -100,7 +98,7 @@ Namespace TempAzubiBerichtsheft.Views
             '
             'txtConfirmPassword
             '
-            Me.txtConfirmPassword.Location = New System.Drawing.Point(12, 103)
+            Me.txtConfirmPassword.Location = New System.Drawing.Point(12, 123)
             Me.txtConfirmPassword.Name = "txtConfirmPassword"
             Me.txtConfirmPassword.PasswordChar = "*"c
             Me.txtConfirmPassword.Size = New System.Drawing.Size(200, 20)
@@ -109,7 +107,7 @@ Namespace TempAzubiBerichtsheft.Views
             'rbRA
             '
             Me.rbRA.AutoSize = True
-            Me.rbRA.Location = New System.Drawing.Point(12, 142)
+            Me.rbRA.Location = New System.Drawing.Point(12, 162)
             Me.rbRA.Name = "rbRA"
             Me.rbRA.Size = New System.Drawing.Size(120, 17)
             Me.rbRA.TabIndex = 3
@@ -120,7 +118,7 @@ Namespace TempAzubiBerichtsheft.Views
             'rbReno
             '
             Me.rbReno.AutoSize = True
-            Me.rbReno.Location = New System.Drawing.Point(12, 165)
+            Me.rbReno.Location = New System.Drawing.Point(12, 185)
             Me.rbReno.Name = "rbReno"
             Me.rbReno.Size = New System.Drawing.Size(126, 17)
             Me.rbReno.TabIndex = 4
@@ -130,14 +128,14 @@ Namespace TempAzubiBerichtsheft.Views
             '
             'txtOtherRole
             '
-            Me.txtOtherRole.Location = New System.Drawing.Point(12, 188)
+            Me.txtOtherRole.Location = New System.Drawing.Point(12, 208)
             Me.txtOtherRole.Name = "txtOtherRole"
             Me.txtOtherRole.Size = New System.Drawing.Size(200, 20)
             Me.txtOtherRole.TabIndex = 5
             '
             'btnSave
             '
-            Me.btnSave.Location = New System.Drawing.Point(12, 253)
+            Me.btnSave.Location = New System.Drawing.Point(12, 273)
             Me.btnSave.Name = "btnSave"
             Me.btnSave.Size = New System.Drawing.Size(75, 23)
             Me.btnSave.TabIndex = 6
@@ -148,7 +146,7 @@ Namespace TempAzubiBerichtsheft.Views
             'lblUsername
             '
             Me.lblUsername.AutoSize = True
-            Me.lblUsername.Location = New System.Drawing.Point(12, 9)
+            Me.lblUsername.Location = New System.Drawing.Point(12, 29)
             Me.lblUsername.Name = "lblUsername"
             Me.lblUsername.Size = New System.Drawing.Size(75, 13)
             Me.lblUsername.TabIndex = 8
@@ -157,7 +155,7 @@ Namespace TempAzubiBerichtsheft.Views
             'lblPassword
             '
             Me.lblPassword.AutoSize = True
-            Me.lblPassword.Location = New System.Drawing.Point(12, 48)
+            Me.lblPassword.Location = New System.Drawing.Point(12, 68)
             Me.lblPassword.Name = "lblPassword"
             Me.lblPassword.Size = New System.Drawing.Size(50, 13)
             Me.lblPassword.TabIndex = 9
@@ -166,7 +164,7 @@ Namespace TempAzubiBerichtsheft.Views
             'lblConfirmPassword
             '
             Me.lblConfirmPassword.AutoSize = True
-            Me.lblConfirmPassword.Location = New System.Drawing.Point(12, 87)
+            Me.lblConfirmPassword.Location = New System.Drawing.Point(12, 107)
             Me.lblConfirmPassword.Name = "lblConfirmPassword"
             Me.lblConfirmPassword.Size = New System.Drawing.Size(91, 13)
             Me.lblConfirmPassword.TabIndex = 10
@@ -175,7 +173,7 @@ Namespace TempAzubiBerichtsheft.Views
             'lblRole
             '
             Me.lblRole.AutoSize = True
-            Me.lblRole.Location = New System.Drawing.Point(12, 126)
+            Me.lblRole.Location = New System.Drawing.Point(12, 146)
             Me.lblRole.Name = "lblRole"
             Me.lblRole.Size = New System.Drawing.Size(33, 13)
             Me.lblRole.TabIndex = 11
@@ -184,7 +182,7 @@ Namespace TempAzubiBerichtsheft.Views
             'lblPostalCode
             '
             Me.lblPostalCode.AutoSize = True
-            Me.lblPostalCode.Location = New System.Drawing.Point(12, 211)
+            Me.lblPostalCode.Location = New System.Drawing.Point(12, 231)
             Me.lblPostalCode.Name = "lblPostalCode"
             Me.lblPostalCode.Size = New System.Drawing.Size(62, 13)
             Me.lblPostalCode.TabIndex = 12
@@ -192,7 +190,7 @@ Namespace TempAzubiBerichtsheft.Views
             '
             'ViewRegister
             '
-            Me.ClientSize = New System.Drawing.Size(300, 280)
+            Me.ClientSize = New System.Drawing.Size(300, 300)
             Me.StartPosition = FormStartPosition.CenterScreen
             Me.Controls.Add(Me.abschluss) 'Me.btnSave)
             Me.Controls.Add(Me.txtOtherRole)
@@ -207,7 +205,7 @@ Namespace TempAzubiBerichtsheft.Views
             Me.Controls.Add(Me.lblPassword)
             Me.Controls.Add(Me.lblUsername)
             Me.Name = "ViewRegister"
-            Me.Icon = New Icon(GetResourcePath("Azubi-Berichtsheft_3216.ico"))
+            Me.Icon = New Icon(viewModel.GetResourcePath("Azubi-Berichtsheft_3216.ico"))
             Me.ResumeLayout(False)
             Me.PerformLayout()
 

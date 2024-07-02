@@ -3,10 +3,12 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <StartupObject>Sub Main</StartupObject>
-    <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>TempAzubiBerichtsheft.My.MyApplication</StartupObject>
+    <UseWindowsForms>True</UseWindowsForms>
     <MyType>WindowsForms</MyType>
     <ApplicationIcon>Resourcen\Azubi-Berichtsheft_3216.ico</ApplicationIcon>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <UseApplicationFramework>True</UseApplicationFramework>
   </PropertyGroup>
 
   <ItemGroup>

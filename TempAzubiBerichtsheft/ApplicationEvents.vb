@@ -24,6 +24,13 @@ Namespace My
     ' End Sub
 
     Partial Friend Class MyApplication
-
+        Private Sub Berichtsheft_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
+            ' Register the encoding provider
+            'System.Text.Encoding.RegisterProvider(System.Text.Encoding.RegisterProvider())
+            
+            ' Enable the visual styles
+            'Application.EnableVisualStyles()
+            'Application.SetCompatibleTextRenderingDefault(False)
+        End Sub
     End Class
 End Namespace

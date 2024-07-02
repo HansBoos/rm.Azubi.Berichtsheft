@@ -38,14 +38,24 @@ Namespace TempAzubiBerichtsheft.Views
         Private labelName As Label
         Private pdfViewerRahmen As rm.ChatGPTiumViewerEditor.PdfViewerControl 'As PdfViewer
         Private pdfViewerAusbildungsNachweis As rm.ChatGPTiumViewerEditor.PdfViewerControl 'As PdfViewer
+
         Private richTextAusbildungsplatz As RichTextBox
         Private richTextBerufsschule As RichTextBox
-        Private fontComboBox As ComboBox
-        Private fontSizeNumericUpDown As NumericUpDown
-        Private colorPickerButton As Button
-        Private boldButton As Button
-        Private italicButton As Button
+        Private btnItalicAusbildungsplatz As Button
+        Private btnBoldAusbildungsplatz As Button
+        Private btnNormalAusbildungsplatz As Button
+        Private numFontSizeAusbildungsplatz As NumericUpDown
+        Private cmbFontFamilyAusbildungsplatz As ComboBox
+        Private colorPickerButtonAusbildungsplatz As Button
+
+        Private btnItalicBerufsschule As Button
+        Private btnBoldBerufsschule As Button
+        Private btnNormalBerufsschule As Button
+        Private numFontSizeBerufsschule As NumericUpDown
+        Private cmbFontFamilyBerufsschule As ComboBox
         Private normalButton As Button
+        Private colorPickerButtonBerufsschule As Button
+
         Private listBoxBerichte As System.Windows.Forms.ListBox
         Private treeViewBerichte As System.Windows.Forms.TreeView
         Private WithEvents abschluss As XPSAbschluss
@@ -55,8 +65,10 @@ Namespace TempAzubiBerichtsheft.Views
         Private tlpPanel As TableLayoutPanel
         Private tlpRichtext As TableLayoutPanel
 
-        Dim pfadZurVorlage1 As String = GetResourcePath("Berufsausbild_Rahmenplan.pdf")
-        Dim pfadZurVorlage2 As String = GetResourcePath("Ausbildungsnachweis.pdf")
+        Private pfadZurVorlage1 As String
+        Private pfadZurVorlage2 As String
+
+
 
         Public Sub New(viewModel As MainViewModel)
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance)
@@ -68,12 +80,32 @@ Namespace TempAzubiBerichtsheft.Views
             End Try
 
 
+
             _viewModel = viewModel
+
+            pfadZurVorlage1 = viewModel.GetResourcePath("Berufsausbild_Rahmenplan.pdf")
+            pfadZurVorlage2 = viewModel.GetResourcePath("Ausbildungsnachweis.pdf")
             InitializeComponent()
+            BindCommands(viewModel)
             DisplayBerichte()
             Me.labelName.Text = $"Benutzer: {_viewModel.Benutzer.Name }"
             Me.labelYear.Text = $"Jahr: {DateTime.Now.Year}"
             Me.labelWeek.Text = $"KW: {DatePart(DateInterval.WeekOfYear, Now)}"
+        End Sub
+
+        Private Sub BindCommands(viewModel As MainViewModel)
+            ' Binden der Befehle an die Steuerelemente
+            AddHandler btnItalicAusbildungsplatz.Click, Sub() viewModel.ItalicCommand.Execute(richTextAusbildungsplatz)
+            AddHandler btnBoldAusbildungsplatz.Click, Sub() viewModel.BoldCommand.Execute(richTextAusbildungsplatz)
+            AddHandler btnNormalAusbildungsplatz.Click, Sub() viewModel.NormalCommand.Execute(richTextAusbildungsplatz)
+            AddHandler numFontSizeAusbildungsplatz.ValueChanged, Sub() viewModel.ChangeFontSizeCommand.Execute(New Tuple(Of RichTextBox, Single)(richTextAusbildungsplatz, CType(numFontSizeAusbildungsplatz.Value, Single)))
+            AddHandler cmbFontFamilyAusbildungsplatz.SelectedIndexChanged, Sub() viewModel.ChangeFontFamilyCommand.Execute(New Tuple(Of RichTextBox, String)(richTextAusbildungsplatz, cmbFontFamilyAusbildungsplatz.SelectedItem.ToString()))
+
+            'AddHandler btnItalicBerufsschule.Click, Sub() viewModel.ItalicCommand.Execute(richTextBerufsschule)
+            'AddHandler btnBoldBerufsschule.Click, Sub() viewModel.BoldCommand.Execute(richTextBerufsschule)
+            'AddHandler btnNormalBerufsschule.Click, Sub() viewModel.NormalCommand.Execute(richTextBerufsschule)
+            'AddHandler numFontSizeBerufsschule.ValueChanged, Sub() viewModel.ChangeFontSizeCommand.Execute(New Tuple(Of RichTextBox, Single)(richTextBerufsschule, CType(numFontSizeBerufsschule.Value, Single)))
+            'AddHandler cmbFontFamilyBerufsschule.SelectedIndexChanged, Sub() viewModel.ChangeFontFamilyCommand.Execute(New Tuple(Of RichTextBox, String)(richTextBerufsschule, cmbFontFamilyBerufsschule.SelectedItem.ToString()))
         End Sub
 
         Private Sub DisplayBerichte()
@@ -102,11 +134,11 @@ Namespace TempAzubiBerichtsheft.Views
         End Sub
 
 
-        Public Shared Function GetResourcePath(fileName As String) As String
-            Dim basePath As String = AppDomain.CurrentDomain.BaseDirectory.Replace("\bin\Debug\net8.0-windows\", "")
-            Dim resourcePath As String = Path.Combine(basePath, "Resourcen", fileName)
-            Return resourcePath
-        End Function
+        'Public Shared Function GetResourcePath(fileName As String) As String
+        '    Dim basePath As String = AppDomain.CurrentDomain.BaseDirectory.Replace("\bin\Debug\net8.0-windows\", "")
+        '    Dim resourcePath As String = Path.Combine(basePath, "Resourcen", fileName)
+        '    Return resourcePath
+        'End Function
 
 
         ' Initialisieren Sie die Komponenten des Formulars
@@ -122,12 +154,12 @@ Namespace TempAzubiBerichtsheft.Views
             Me.pdfViewerAusbildungsNachweis = New PdfViewerControl() ' New PdfViewer()
             Me.richTextAusbildungsplatz = New RichTextBox()
             Me.richTextBerufsschule = New RichTextBox()
-            Me.fontComboBox = New ComboBox()
-            Me.fontSizeNumericUpDown = New NumericUpDown()
-            Me.colorPickerButton = New Button()
-            Me.boldButton = New Button()
-            Me.italicButton = New Button()
-            Me.normalButton = New Button()
+            Me.cmbFontFamilyAusbildungsplatz = New ComboBox()
+            Me.numFontSizeAusbildungsplatz = New NumericUpDown()
+            Me.colorPickerButtonAusbildungsplatz = New Button()
+            Me.btnBoldAusbildungsplatz = New Button()
+            Me.btnItalicAusbildungsplatz = New Button()
+            Me.btnNormalAusbildungsplatz = New Button()
             Me.listBoxBerichte = New ListBox()
             Me.treeViewBerichte = New TreeView()
             Me.abschluss = New XPSAbschluss()
@@ -161,12 +193,12 @@ Namespace TempAzubiBerichtsheft.Views
             Me.tlpRichtext.RowStyles.Add(New RowStyle(SizeType.Percent, 40.0!))
             Me.tlpRichtext.Size = New Size(250, 500)
             Me.tlpRichtext.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Top
-            Me.tlpRichtext.Controls.Add(fontComboBox, 0, 0)
-            Me.tlpRichtext.Controls.Add(fontSizeNumericUpDown, 1, 0)
-            Me.tlpRichtext.Controls.Add(colorPickerButton, 2, 0)
-            Me.tlpRichtext.Controls.Add(boldButton, 3, 0)
-            Me.tlpRichtext.Controls.Add(italicButton, 4, 0)
-            Me.tlpRichtext.Controls.Add(normalButton, 5, 0)
+            Me.tlpRichtext.Controls.Add(cmbFontFamilyAusbildungsplatz, 0, 0)
+            Me.tlpRichtext.Controls.Add(numFontSizeAusbildungsplatz, 1, 0)
+            Me.tlpRichtext.Controls.Add(colorPickerButtonAusbildungsplatz, 2, 0)
+            Me.tlpRichtext.Controls.Add(btnBoldAusbildungsplatz, 3, 0)
+            Me.tlpRichtext.Controls.Add(btnItalicAusbildungsplatz, 4, 0)
+            Me.tlpRichtext.Controls.Add(btnNormalAusbildungsplatz, 5, 0)
             Me.tlpRichtext.Controls.Add(richTextAusbildungsplatz, 0, 1)
             Me.tlpRichtext.SetColumnSpan(richTextAusbildungsplatz, 6)
             Me.tlpRichtext.Controls.Add(richTextBerufsschule, 0, 2)
@@ -243,70 +275,70 @@ Namespace TempAzubiBerichtsheft.Views
             Me.pdfViewerAusbildungsNachweis.TabIndex = 15
             'Me.pdfViewerAusbildungsNachweis.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToWidth
             ' fontComboBox
-            Me.fontComboBox.Location = New Point(12, 50)
-            Me.fontComboBox.Name = "fontComboBox"
-            Me.fontComboBox.Size = New Size(121, 23)
-            Me.fontComboBox.TabIndex = 16
-            Me.fontComboBox.DropDownStyle = ComboBoxStyle.DropDownList
-            Me.fontComboBox.Dock = DockStyle.Fill
+            Me.cmbFontFamilyAusbildungsplatz.Location = New Point(12, 50)
+            Me.cmbFontFamilyAusbildungsplatz.Name = "fontComboBox"
+            Me.cmbFontFamilyAusbildungsplatz.Size = New Size(121, 23)
+            Me.cmbFontFamilyAusbildungsplatz.TabIndex = 16
+            Me.cmbFontFamilyAusbildungsplatz.DropDownStyle = ComboBoxStyle.DropDownList
+            Me.cmbFontFamilyAusbildungsplatz.Dock = DockStyle.Fill
             For Each font As FontFamily In FontFamily.Families
-                Me.fontComboBox.Items.Add(font.Name)
+                Me.cmbFontFamilyAusbildungsplatz.Items.Add(font.Name)
             Next
-            AddHandler Me.fontComboBox.SelectedIndexChanged, AddressOf Me.fontComboBox_SelectedIndexChanged
+            AddHandler Me.cmbFontFamilyAusbildungsplatz.SelectedIndexChanged, AddressOf Me.fontComboBox_SelectedIndexChanged
 
             ' fontSizeNumericUpDown
-            Me.fontSizeNumericUpDown.Location = New Point(140, 50)
-            Me.fontSizeNumericUpDown.Name = "fontSizeNumericUpDown"
-            Me.fontSizeNumericUpDown.Size = New Size(50, 23)
-            Me.fontSizeNumericUpDown.TabIndex = 17
-            Me.fontSizeNumericUpDown.Minimum = 8
-            Me.fontSizeNumericUpDown.Maximum = 72
-            Me.fontSizeNumericUpDown.Dock = DockStyle.Fill
-            AddHandler Me.fontSizeNumericUpDown.ValueChanged, AddressOf Me.fontSizeNumericUpDown_ValueChanged
+            Me.numFontSizeAusbildungsplatz.Location = New Point(140, 50)
+            Me.numFontSizeAusbildungsplatz.Name = "fontSizeNumericUpDown"
+            Me.numFontSizeAusbildungsplatz.Size = New Size(50, 23)
+            Me.numFontSizeAusbildungsplatz.TabIndex = 17
+            Me.numFontSizeAusbildungsplatz.Minimum = 8
+            Me.numFontSizeAusbildungsplatz.Maximum = 72
+            Me.numFontSizeAusbildungsplatz.Dock = DockStyle.Fill
+            AddHandler Me.numFontSizeAusbildungsplatz.ValueChanged, AddressOf Me.fontSizeNumericUpDown_ValueChanged
 
             ' colorPickerButton
-            Me.colorPickerButton.Location = New Point(200, 50)
-            Me.colorPickerButton.Name = "colorPickerButton"
-            Me.colorPickerButton.Size = New Size(75, 23)
-            Me.colorPickerButton.TabIndex = 18
-            Me.colorPickerButton.Text = "Color"
-            Me.colorPickerButton.UseVisualStyleBackColor = True
-            Me.colorPickerButton.Dock = DockStyle.Fill
-            AddHandler Me.colorPickerButton.Click, AddressOf Me.colorPickerButton_Click
+            Me.colorPickerButtonAusbildungsplatz.Location = New Point(200, 50)
+            Me.colorPickerButtonAusbildungsplatz.Name = "colorPickerButton"
+            Me.colorPickerButtonAusbildungsplatz.Size = New Size(75, 23)
+            Me.colorPickerButtonAusbildungsplatz.TabIndex = 18
+            Me.colorPickerButtonAusbildungsplatz.Text = "Color"
+            Me.colorPickerButtonAusbildungsplatz.UseVisualStyleBackColor = True
+            Me.colorPickerButtonAusbildungsplatz.Dock = DockStyle.Fill
+            AddHandler Me.colorPickerButtonAusbildungsplatz.Click, AddressOf Me.colorPickerButton_Click
             ' boldButton
-            Me.boldButton.Location = New Point(280, 50)
-            Me.boldButton.Name = "boldButton"
-            Me.boldButton.Size = New Size(35, 23)
-            Me.boldButton.TabIndex = 19
-            Me.boldButton.Text = "B"
-            Me.boldButton.Font = New Font(Me.boldButton.Font, FontStyle.Bold)
-            Me.boldButton.UseVisualStyleBackColor = True
-            Me.boldButton.Dock = DockStyle.Fill
-            AddHandler Me.boldButton.Click, AddressOf Me.boldButton_Click
+            Me.btnBoldAusbildungsplatz.Location = New Point(280, 50)
+            Me.btnBoldAusbildungsplatz.Name = "boldButton"
+            Me.btnBoldAusbildungsplatz.Size = New Size(35, 23)
+            Me.btnBoldAusbildungsplatz.TabIndex = 19
+            Me.btnBoldAusbildungsplatz.Text = "B"
+            Me.btnBoldAusbildungsplatz.Font = New Font(Me.btnBoldAusbildungsplatz.Font, FontStyle.Bold)
+            Me.btnBoldAusbildungsplatz.UseVisualStyleBackColor = True
+            Me.btnBoldAusbildungsplatz.Dock = DockStyle.Fill
+            AddHandler Me.btnBoldAusbildungsplatz.Click, AddressOf Me.boldButton_Click
             '
             ' italicButton
             '
-            Me.italicButton.Location = New Point(320, 50)
-            Me.italicButton.Name = "italicButton"
-            Me.italicButton.Size = New Size(35, 23)
-            Me.italicButton.TabIndex = 20
-            Me.italicButton.Text = "I"
-            Me.italicButton.Font = New Font(Me.italicButton.Font, FontStyle.Italic)
-            Me.italicButton.UseVisualStyleBackColor = True
-            Me.italicButton.Dock = DockStyle.Fill
-            AddHandler Me.italicButton.Click, AddressOf Me.italicButton_Click
+            Me.btnItalicAusbildungsplatz.Location = New Point(320, 50)
+            Me.btnItalicAusbildungsplatz.Name = "italicButton"
+            Me.btnItalicAusbildungsplatz.Size = New Size(35, 23)
+            Me.btnItalicAusbildungsplatz.TabIndex = 20
+            Me.btnItalicAusbildungsplatz.Text = "I"
+            Me.btnItalicAusbildungsplatz.Font = New Font(Me.btnItalicAusbildungsplatz.Font, FontStyle.Italic)
+            Me.btnItalicAusbildungsplatz.UseVisualStyleBackColor = True
+            Me.btnItalicAusbildungsplatz.Dock = DockStyle.Fill
+            AddHandler Me.btnItalicAusbildungsplatz.Click, AddressOf Me.italicButton_Click
             '
             ' normalButton
             '
-            Me.normalButton.Location = New Point(360, 50)
-            Me.normalButton.Name = "normalButton"
-            Me.normalButton.Size = New Size(35, 23)
-            Me.normalButton.TabIndex = 21
-            Me.normalButton.Text = "N"
-            Me.normalButton.Font = New Font(Me.normalButton.Font, FontStyle.Regular)
-            Me.normalButton.UseVisualStyleBackColor = True
-            Me.normalButton.Dock = DockStyle.Fill
-            AddHandler Me.normalButton.Click, AddressOf Me.normalButton_Click
+            Me.btnNormalAusbildungsplatz.Location = New Point(360, 50)
+            Me.btnNormalAusbildungsplatz.Name = "normalButton"
+            Me.btnNormalAusbildungsplatz.Size = New Size(35, 23)
+            Me.btnNormalAusbildungsplatz.TabIndex = 21
+            Me.btnNormalAusbildungsplatz.Text = "N"
+            Me.btnNormalAusbildungsplatz.Font = New Font(Me.btnNormalAusbildungsplatz.Font, FontStyle.Regular)
+            Me.btnNormalAusbildungsplatz.UseVisualStyleBackColor = True
+            Me.btnNormalAusbildungsplatz.Dock = DockStyle.Fill
+            AddHandler Me.btnNormalAusbildungsplatz.Click, AddressOf Me.normalButton_Click
 
             '
             ' richTextAusbildungsplatz
@@ -347,7 +379,8 @@ Namespace TempAzubiBerichtsheft.Views
             'Me.panelMiddle.Controls.Add(Me.richTextAusbildungsplatz)
             Me.Name = "MainView"
             Me.Text = "RA-MICRO Cockpit Berichtsheft"
-            Me.Icon = New Icon(GetResourcePath("Azubi-Berichtsheft_3216.ico"))
+            Me.Icon = New Icon(_viewModel.GetResourcePath("Azubi-Berichtsheft_3216.ico"))
+            Me.WindowState = FormWindowState.Maximized
             Me.ResumeLayout(False)
             Me.PerformLayout()
 
@@ -377,7 +410,7 @@ Namespace TempAzubiBerichtsheft.Views
 
         Private Sub fontSizeNumericUpDown_ValueChanged(obj As Object, e As EventArgs)
             Dim currentFont As Font = richTextAusbildungsplatz.SelectionFont
-            richTextAusbildungsplatz.SelectionFont = New Font(currentFont.FontFamily, fontSizeNumericUpDown.Value, currentFont.Style)
+            richTextAusbildungsplatz.SelectionFont = New Font(currentFont.FontFamily, numFontSizeAusbildungsplatz.Value, currentFont.Style)
         End Sub
         Private Sub colorPickerButton_Click(sender As Object, e As EventArgs)
             Dim colorDialog As New ColorDialog()
@@ -388,7 +421,7 @@ Namespace TempAzubiBerichtsheft.Views
 
         Private Sub fontComboBox_SelectedIndexChanged(obj As Object, e As EventArgs)
             Dim currentFont As Font = richTextAusbildungsplatz.SelectionFont
-            Dim newFontFamily As FontFamily = New FontFamily(fontComboBox.SelectedItem.ToString())
+            Dim newFontFamily As FontFamily = New FontFamily(cmbFontFamilyAusbildungsplatz.SelectedItem.ToString())
             richTextAusbildungsplatz.SelectionFont = New Font(newFontFamily, currentFont.Size, currentFont.Style)
         End Sub
 
@@ -414,29 +447,15 @@ Namespace TempAzubiBerichtsheft.Views
 
 
         Private Sub MainView_Load(sender As Object, e As EventArgs) Handles Me.Load
-            fontComboBox.Text = "Segoe UI"
-            fontSizeNumericUpDown.Value = 12
+            'fontComboBox.Text = "Segoe UI"
+            'fontSizeNumericUpDown.Value = 12
             pdfViewerRahmen.LoadPdf(pfadZurVorlage1)
             pdfViewerAusbildungsNachweis.LoadPdf(pfadZurVorlage2)
 
 
         End Sub
 
-        Private Sub OnPdfMouseClick(sender As Object, e As MouseEventArgs)
-            If richTextAusbildungsplatz.Text = "" Then
-                'MessageBox.Show("Bitte geben Sie einen Text ein")
-                Return
-            Else
 
-            End If
-            If e.Button = MouseButtons.Left Then
-                Dim pageNumber = pdfViewer.GetPageNumberAtPosition '.GetPageNumberAtPosition(e.X, e.Y)
-                Dim pdfCoordinates = pdfViewer.GetPdfCoordinates(e) '.X, e.Y)
-                Dim text = richTextAusbildungsplatz.Text
-                pdfEditor.AddTextToPdf("path\to\your\document.pdf", "path\to\your\output.pdf", text, pageNumber, pdfCoordinates.X, pdfCoordinates.Y)
-                pdfViewer.LoadPdf("path\to\your\output.pdf") ' Reload the PDF to see the changes
-            End If
-        End Sub
 
         Private Sub abschluss_ButtonClick(sender As Object, e As EventArgs) Handles abschluss.ButtonAbbruchClick
             Me.Close()

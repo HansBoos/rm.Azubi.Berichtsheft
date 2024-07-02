@@ -18,7 +18,7 @@ Namespace TempAzubiBerichtsheft.Views
         Private WithEvents btnLogin As Button
         Private abschluss As XPSAbschluss
         'Private lblMessage As Label
-
+        Private viewModel As LoginViewModel
         Private benutzerRepository As BenutzerRepository
         Private benutzerList As List(Of Benutzer)
 
@@ -30,7 +30,8 @@ Namespace TempAzubiBerichtsheft.Views
             Catch ex As Exception
                 MessageBox.Show("Fehler beim Starten der RA-MICRO Runtime: " & ex.Message)
             End Try
-
+            viewModel = New LoginViewModel()
+            Me.viewModel = viewModel
             InitializeComponent()
             benutzerRepository = New BenutzerRepository()
             benutzerList = benutzerRepository.LoadBenutzer()
@@ -66,7 +67,8 @@ Namespace TempAzubiBerichtsheft.Views
             Me.Controls.Add(txtPassword)
             Me.Controls.Add(abschluss)
             'Me.Controls.Add(lblMessage)
-            Me.Icon = New Icon(GetResourcePath("Azubi-Berichtsheft_3216.ico"))
+
+            Me.Icon = New Icon(viewModel.GetResourcePath("Azubi-Berichtsheft_3216.ico"))
         End Sub
 
         Private Sub cboUsername_TextChanged(sender As Object, e As EventArgs)
@@ -79,11 +81,7 @@ Namespace TempAzubiBerichtsheft.Views
             End If
         End Sub
 
-        Public Shared Function GetResourcePath(fileName As String) As String
-            Dim basePath As String = AppDomain.CurrentDomain.BaseDirectory.Replace("\bin\Debug\net8.0-windows\", "")
-            Dim resourcePath As String = Path.Combine(basePath, "Resourcen", fileName)
-            Return resourcePath
-        End Function
+
 
         Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
             Dim username As String = cboUsername.Text
