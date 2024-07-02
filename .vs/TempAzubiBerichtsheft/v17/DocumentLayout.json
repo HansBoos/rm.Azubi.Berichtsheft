@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\viewmodels\\loginviewmodel.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\viewmodels\\loginviewmodel.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\views\\loginview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\views\\loginview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
@@ -17,6 +13,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\views\\registerview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\views\\registerview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\viewmodels\\loginviewmodel.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\viewmodels\\loginviewmodel.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\viewmodels\\registerviewmodel.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 17,
+          "SelectedChildIndex": 20,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,13 +98,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MainView.vb",
               "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\MainView.vb",
               "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Views\\MainView.vb",
               "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\MainView.vb",
               "RelativeToolTip": "TempAzubiBerichtsheft\\Views\\MainView.vb",
-              "ViewState": "AQIAAFoAAAAAAAAAAAD4v2sAAADjAAAA",
+              "ViewState": "AQIAAHABAAAAAAAAAAAvwIABAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2024-07-02T10:33:54.294Z",
               "EditorCaption": ""
@@ -163,13 +163,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "LoginViewModel.vb",
               "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\ViewModels\\LoginViewModel.vb",
               "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\ViewModels\\LoginViewModel.vb",
               "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\ViewModels\\LoginViewModel.vb",
               "RelativeToolTip": "TempAzubiBerichtsheft\\ViewModels\\LoginViewModel.vb",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAARAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2024-07-02T15:20:37.416Z",
               "EditorCaption": ""
@@ -189,26 +189,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "RegisterView.vb",
               "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\RegisterView.vb",
               "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Views\\RegisterView.vb",
               "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\RegisterView.vb",
               "RelativeToolTip": "TempAzubiBerichtsheft\\Views\\RegisterView.vb",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAcwAwAAAAdAAAA",
+              "ViewState": "AQIAAMMAAAAAAAAAAAAgwNAAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2024-07-02T15:22:21.385Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LoginView.vb",
               "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\LoginView.vb",
               "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Views\\LoginView.vb",
               "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\LoginView.vb",
               "RelativeToolTip": "TempAzubiBerichtsheft\\Views\\LoginView.vb",
-              "ViewState": "AQIAAGIAAAAAAAAAAAAAwAAAAAAAAAAA",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAuwDAAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2024-07-02T15:24:21.643Z",
               "EditorCaption": ""

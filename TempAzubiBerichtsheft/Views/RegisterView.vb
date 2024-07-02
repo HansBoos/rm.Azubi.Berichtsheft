@@ -205,6 +205,8 @@ Namespace TempAzubiBerichtsheft.Views
             Me.Controls.Add(Me.lblPassword)
             Me.Controls.Add(Me.lblUsername)
             Me.Name = "ViewRegister"
+            Me.HelpButton = True
+            Me.InfodeskButton = True
             Me.Icon = New Icon(viewModel.GetResourcePath("Azubi-Berichtsheft_3216.ico"))
             Me.ResumeLayout(False)
             Me.PerformLayout()

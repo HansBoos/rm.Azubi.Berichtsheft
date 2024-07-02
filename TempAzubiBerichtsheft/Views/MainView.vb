@@ -381,6 +381,8 @@ Namespace TempAzubiBerichtsheft.Views
             Me.Text = "RA-MICRO Cockpit Berichtsheft"
             Me.Icon = New Icon(_viewModel.GetResourcePath("Azubi-Berichtsheft_3216.ico"))
             Me.WindowState = FormWindowState.Maximized
+            Me.HelpButton = True
+            'Me.InfodeskButton = True
             Me.ResumeLayout(False)
             Me.PerformLayout()
 

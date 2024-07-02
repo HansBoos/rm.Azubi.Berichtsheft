@@ -28,4 +28,11 @@
     <LoginDaten>RA-Fachangestellte/r</LoginDaten>
     <Password>benny</Password>
   </Benutzer>
+  <Benutzer>
+    <BenutzerID>0</BenutzerID>
+    <Name>Ralf Stallbaum</Name>
+    <Rolle>r</Rolle>
+    <LoginDaten>RA-Fachangestellte/r</LoginDaten>
+    <Password>r</Password>
+  </Benutzer>
 </ArrayOfBenutzer>

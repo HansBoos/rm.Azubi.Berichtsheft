@@ -66,6 +66,12 @@ Namespace TempAzubiBerichtsheft.Views
             Me.Controls.Add(cboUsername)
             Me.Controls.Add(txtPassword)
             Me.Controls.Add(abschluss)
+            Me.MaximizeBox = False
+            Me.MinimizeBox = False
+            Me.HelpButton = True
+            Me.InfodeskButton = True
+
+
             'Me.Controls.Add(lblMessage)
 
             Me.Icon = New Icon(viewModel.GetResourcePath("Azubi-Berichtsheft_3216.ico"))
