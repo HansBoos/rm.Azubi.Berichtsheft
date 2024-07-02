@@ -4,36 +4,52 @@ Imports TempAzubiBerichtsheft.ViewModels
 Imports System.Drawing
 Imports TempAzubiBerichtsheft.TempAzubiBerichtsheft.ViewModels
 Imports System.IO
+Imports rm.ChatGPTiumViewerEditor
+Imports System.Runtime.InteropServices
+Imports TempAzubiBerichtsheft.TempAzubiBerichtsheft.Models
+Imports System.Collections.Generic
+Imports TempAzubiBerichtsheft.TempAzubiBerichtsheft.Data
+Imports ramicro7.ui
+Imports System.Text
+
 
 Namespace TempAzubiBerichtsheft.Views
     Public Class MainView
         Inherits Form
 
+
+
         Private components As System.ComponentModel.IContainer
-        Private WithEvents btnLoad As Button
-        Private WithEvents btnSave As Button
-        Private WithEvents btnSend As Button
-        Private WithEvents btnClose As Button
-        Private comboBoxRole As ComboBox
-        Private comboBoxYear As ComboBox
-        Private comboBoxWeek As ComboBox
-        Private textBoxName As TextBox
-        'Private panelLeft As Panel
-        'Private panelMiddle As Panel
-        'Private panelRight As Panel
-        Private labelRole As Label
+
+        Private pdfViewer As PdfViewerControl
+        Private pdfEditor As PdfEditor
+
+        Dim docOrigin As String
+        Dim docDestination As String
+
+        Private benutzerRepository As BenutzerRepository
+        Private benutzerList As List(Of Benutzer)
+
+        Private ausbildungsberichtRepository As AusbildungsberichtRepository
+        Private berichte As List(Of Ausbildungsbericht)
+        Private currentUSer As Benutzer
         Private labelYear As Label
         Private labelWeek As Label
         Private labelName As Label
-        Private pdfViewerRahmen As PdfViewer
-        Private pdfViewerAusbildungsNachweis As PdfViewer
-        Private richTextEditor As RichTextBox
+        Private pdfViewerRahmen As rm.ChatGPTiumViewerEditor.PdfViewerControl 'As PdfViewer
+        Private pdfViewerAusbildungsNachweis As rm.ChatGPTiumViewerEditor.PdfViewerControl 'As PdfViewer
+        Private richTextAusbildungsplatz As RichTextBox
+        Private richTextBerufsschule As RichTextBox
         Private fontComboBox As ComboBox
         Private fontSizeNumericUpDown As NumericUpDown
         Private colorPickerButton As Button
         Private boldButton As Button
         Private italicButton As Button
         Private normalButton As Button
+        Private listBoxBerichte As System.Windows.Forms.ListBox
+        Private treeViewBerichte As System.Windows.Forms.TreeView
+        Private WithEvents abschluss As XPSAbschluss
+
         Private ReadOnly _viewModel As MainViewModel
 
         Private tlpPanel As TableLayoutPanel
@@ -43,17 +59,47 @@ Namespace TempAzubiBerichtsheft.Views
         Dim pfadZurVorlage2 As String = GetResourcePath("Ausbildungsnachweis.pdf")
 
         Public Sub New(viewModel As MainViewModel)
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance)
+            Dim runtime As ramicro7.common.ramain.RARuntime
+            Try
+                runtime = ramicro7.common.ramain.RARuntime.Instance
+            Catch ex As Exception
+                MessageBox.Show("Fehler beim Starten der RA-MICRO Runtime: " & ex.Message)
+            End Try
+
+
             _viewModel = viewModel
             InitializeComponent()
-
-            pdfViewerRahmen.LoadDocument(pfadZurVorlage1)
-            pdfViewerAusbildungsNachweis.LoadDocument(pfadZurVorlage2)
-            ' PDF Viewer Initialisierung
-            'pdfViewer = New PdfViewer()
-            'pdfViewer.Dock = DockStyle.Fill
-            'tlpPanel.Controls.Add(pdfViewer, 0, 0)
+            DisplayBerichte()
+            Me.labelName.Text = $"Benutzer: {_viewModel.Benutzer.Name }"
+            Me.labelYear.Text = $"Jahr: {DateTime.Now.Year}"
+            Me.labelWeek.Text = $"KW: {DatePart(DateInterval.WeekOfYear, Now)}"
         End Sub
 
+        Private Sub DisplayBerichte()
+
+            treeViewBerichte.Nodes.Clear()
+            Dim rootNode As New TreeNode($"Berichtsheft von {_viewModel.Benutzer.Name}")
+
+            For Each bericht In _viewModel.Ausbildungsberichte
+                Dim node As New TreeNode($"Ausbildungsnachweis vom {bericht.Datum.ToShortDateString()} bis zum {bericht.Datum.AddDays(bericht.Woche * 7).ToShortDateString()}")
+                rootNode.Nodes.Add(node)
+            Next
+
+            Dim newBerichtNode As New TreeNode("neuer Ausbildungsnachweis")
+            rootNode.Nodes.Add(newBerichtNode)
+
+            treeViewBerichte.Nodes.Add(rootNode)
+            treeViewBerichte.ExpandAll()
+        End Sub
+
+        Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles abschluss.ButtonAbbruchClick
+
+            ' Beispielcode zum Hinzufügen eines neuen Berichts
+            Dim bericht As New Ausbildungsbericht(DateTime.Now, "Neuer Bericht", DatePart(DateInterval.WeekOfYear, Now), richTextAusbildungsplatz.Text, richTextBerufsschule.Text)
+            _viewModel.AddBericht(bericht)
+            DisplayBerichte()
+        End Sub
 
 
         Public Shared Function GetResourcePath(fileName As String) As String
@@ -68,32 +114,34 @@ Namespace TempAzubiBerichtsheft.Views
             Me.components = New System.ComponentModel.Container()
             Me.tlpPanel = New TableLayoutPanel()
             Me.tlpRichtext = New TableLayoutPanel()
-            Me.btnLoad = New Button()
-            Me.btnSave = New Button()
-            Me.btnSend = New Button()
-            Me.btnClose = New Button()
-            Me.comboBoxRole = New ComboBox()
-            Me.comboBoxYear = New ComboBox()
-            Me.comboBoxWeek = New ComboBox()
-            Me.textBoxName = New TextBox()
-            'Me.panelLeft = New Panel()
-            'Me.panelMiddle = New Panel()
-            'Me.panelRight = New Panel()
-            Me.labelRole = New Label()
+
             Me.labelYear = New Label()
             Me.labelWeek = New Label()
             Me.labelName = New Label()
-            Me.pdfViewerRahmen = New PdfViewer()
-            Me.pdfViewerAusbildungsNachweis = New PdfViewer()
-            Me.richTextEditor = New RichTextBox()
+            Me.pdfViewerRahmen = New rm.ChatGPTiumViewerEditor.PdfViewerControl() ' New PdfViewer()
+            Me.pdfViewerAusbildungsNachweis = New PdfViewerControl() ' New PdfViewer()
+            Me.richTextAusbildungsplatz = New RichTextBox()
+            Me.richTextBerufsschule = New RichTextBox()
             Me.fontComboBox = New ComboBox()
             Me.fontSizeNumericUpDown = New NumericUpDown()
             Me.colorPickerButton = New Button()
             Me.boldButton = New Button()
             Me.italicButton = New Button()
             Me.normalButton = New Button()
-
+            Me.listBoxBerichte = New ListBox()
+            Me.treeViewBerichte = New TreeView()
+            Me.abschluss = New XPSAbschluss()
             Me.SuspendLayout()
+
+
+            Me.abschluss.ButtonÜbernehmenVisible = True
+            Me.abschluss.Dock = DockStyle.Fill
+            Me.abschluss.Location = New Point(0, 0)
+            Me.abschluss.Name = "abschluss"
+            Me.abschluss.Size = New Size(828, 40)
+            Me.abschluss.TabIndex = 0
+            Me.abschluss.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Top
+
 
             '
             ' tlpRichtext
@@ -107,9 +155,10 @@ Namespace TempAzubiBerichtsheft.Views
             Me.tlpRichtext.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20.0!))
             Me.tlpRichtext.Location = New Point(590, 50)
             Me.tlpRichtext.Name = "tlpRichtext"
-            Me.tlpRichtext.RowCount = 2
+            Me.tlpRichtext.RowCount = 3
             Me.tlpRichtext.RowStyles.Add(New RowStyle(SizeType.Absolute, 40.0!))
-            Me.tlpRichtext.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0!))
+            Me.tlpRichtext.RowStyles.Add(New RowStyle(SizeType.Percent, 60.0!))
+            Me.tlpRichtext.RowStyles.Add(New RowStyle(SizeType.Percent, 40.0!))
             Me.tlpRichtext.Size = New Size(250, 500)
             Me.tlpRichtext.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Top
             Me.tlpRichtext.Controls.Add(fontComboBox, 0, 0)
@@ -118,111 +167,36 @@ Namespace TempAzubiBerichtsheft.Views
             Me.tlpRichtext.Controls.Add(boldButton, 3, 0)
             Me.tlpRichtext.Controls.Add(italicButton, 4, 0)
             Me.tlpRichtext.Controls.Add(normalButton, 5, 0)
-            Me.tlpRichtext.Controls.Add(richTextEditor, 0, 1)
-            Me.tlpRichtext.SetColumnSpan(richTextEditor, 6)
+            Me.tlpRichtext.Controls.Add(richTextAusbildungsplatz, 0, 1)
+            Me.tlpRichtext.SetColumnSpan(richTextAusbildungsplatz, 6)
+            Me.tlpRichtext.Controls.Add(richTextBerufsschule, 0, 2)
+            Me.tlpRichtext.SetColumnSpan(richTextBerufsschule, 6)
             Me.tlpRichtext.Dock = DockStyle.Fill
+            '
+            'treeViewBerichte
+            '
+            Me.treeViewBerichte.Location = New System.Drawing.Point(12, 12)
+            Me.treeViewBerichte.Name = "treeViewBerichte"
+            Me.treeViewBerichte.Size = New System.Drawing.Size(776, 394)
+            Me.treeViewBerichte.TabIndex = 0
+            Me.treeViewBerichte.Dock = DockStyle.Fill
             '
             ' tlpPanel
             '
-            Me.tlpPanel.ColumnCount = 3
-            Me.tlpPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.33333!))
-            Me.tlpPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.33333!))
-            Me.tlpPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.33333!))
+            Me.tlpPanel.ColumnCount = 4
+            Me.tlpPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 10.0!))
+            Me.tlpPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 30.0!))
+            Me.tlpPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 30.0!))
+            Me.tlpPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 30.0!))
             Me.tlpPanel.Location = New Point(12, 50)
             Me.tlpPanel.Name = "tlpPanel"
-            Me.tlpPanel.RowCount = 1
+            Me.tlpPanel.RowCount = 2
             Me.tlpPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0!))
+            Me.tlpPanel.RowStyles.Add(New RowStyle(SizeType.Absolute, 40.0!))
             Me.tlpPanel.Size = New Size(828, 500)
             Me.tlpPanel.TabIndex = 0
             Me.tlpPanel.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Top
-            '
-            ' btnLoad
-            '
-            Me.btnLoad.Anchor = AnchorStyles.Top
-            Me.btnLoad.Location = New Point(670, 10)
-            Me.btnLoad.Name = "btnLoad"
-            Me.btnLoad.Size = New Size(50, 23)
-            Me.btnLoad.TabIndex = 8
-            Me.btnLoad.Text = "Load"
-            Me.btnLoad.UseVisualStyleBackColor = True
-            AddHandler Me.btnLoad.Click, AddressOf Me.btnLoad_Click
-            '
-            ' btnSave
-            '
-            Me.btnSave.Anchor = AnchorStyles.Top
-            Me.btnSave.Location = New Point(730, 10)
-            Me.btnSave.Name = "btnSave"
-            Me.btnSave.Size = New Size(50, 23)
-            Me.btnSave.TabIndex = 9
-            Me.btnSave.Text = "Save"
-            Me.btnSave.UseVisualStyleBackColor = True
-            AddHandler Me.btnSave.Click, AddressOf Me.btnSave_Click
-            '
-            ' btnSend
-            '
-            Me.btnSend.Anchor = AnchorStyles.Top
-            Me.btnSend.Location = New Point(790, 10)
-            Me.btnSend.Name = "btnSend"
-            Me.btnSend.Size = New Size(50, 23)
-            Me.btnSend.TabIndex = 10
-            Me.btnSend.Text = "Send"
-            Me.btnSend.UseVisualStyleBackColor = True
-            AddHandler Me.btnSend.Click, AddressOf Me.btnSend_Click
-            '
-            ' btnClose
-            '
-            Me.btnClose.Anchor = AnchorStyles.Top
-            Me.btnClose.Location = New Point(850, 10)
-            Me.btnClose.Name = "btnClose"
-            Me.btnClose.Size = New Size(50, 23)
-            Me.btnClose.TabIndex = 11
-            Me.btnClose.Text = "Close"
-            Me.btnClose.UseVisualStyleBackColor = True
-            AddHandler Me.btnClose.Click, AddressOf Me.btnClose_Click
-            '
-            ' comboBoxRole
-            '
-            Me.comboBoxRole.Anchor = AnchorStyles.Top
-            Me.comboBoxRole.Location = New Point(123, 11)
-            Me.comboBoxRole.Name = "comboBoxRole"
-            Me.comboBoxRole.Size = New Size(121, 23)
-            Me.comboBoxRole.TabIndex = 11
-            '
-            ' comboBoxYear
-            '
-            Me.comboBoxYear.Anchor = AnchorStyles.Top
-            Me.comboBoxYear.FormattingEnabled = True
-            Me.comboBoxYear.Location = New Point(250, 10)
-            Me.comboBoxYear.Name = "comboBoxYear"
-            Me.comboBoxYear.Size = New Size(121, 23)
-            Me.comboBoxYear.TabIndex = 1
-            '
-            ' comboBoxWeek
-            '
-            Me.comboBoxWeek.Anchor = AnchorStyles.Top
-            Me.comboBoxWeek.FormattingEnabled = True
-            Me.comboBoxWeek.Location = New Point(380, 10)
-            Me.comboBoxWeek.Name = "comboBoxWeek"
-            Me.comboBoxWeek.Size = New Size(121, 23)
-            Me.comboBoxWeek.TabIndex = 2
-            '
-            ' textBoxName
-            '
-            Me.textBoxName.Anchor = AnchorStyles.Top
-            Me.textBoxName.Location = New Point(510, 10)
-            Me.textBoxName.Name = "textBoxName"
-            Me.textBoxName.Size = New Size(150, 23)
-            Me.textBoxName.TabIndex = 3
-            '
-            ' labelRole
-            '
-            Me.labelRole.Anchor = AnchorStyles.Top
-            Me.labelRole.AutoSize = True
-            Me.labelRole.Location = New Point(12, 18)
-            Me.labelRole.Name = "labelRole"
-            Me.labelRole.Size = New Size(94, 15)
-            Me.labelRole.TabIndex = 4
-            Me.labelRole.Text = "Auszubildende/r"
+
             '
             ' labelYear
             '
@@ -258,7 +232,7 @@ Namespace TempAzubiBerichtsheft.Views
             Me.pdfViewerRahmen.Name = "pdfViewer"
             Me.pdfViewerRahmen.Size = New Size(250, 500)
             Me.pdfViewerRahmen.TabIndex = 14
-            Me.pdfViewerRahmen.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToWidth
+            'Me.pdfViewerRahmen.'.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToWidth
             '
             ' pdfViewerAusbildungsNachweis
             '
@@ -267,7 +241,7 @@ Namespace TempAzubiBerichtsheft.Views
             Me.pdfViewerAusbildungsNachweis.Name = "pdfViewer"
             Me.pdfViewerAusbildungsNachweis.Size = New Size(250, 500)
             Me.pdfViewerAusbildungsNachweis.TabIndex = 15
-            Me.pdfViewerAusbildungsNachweis.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToWidth
+            'Me.pdfViewerAusbildungsNachweis.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToWidth
             ' fontComboBox
             Me.fontComboBox.Location = New Point(12, 50)
             Me.fontComboBox.Name = "fontComboBox"
@@ -335,13 +309,19 @@ Namespace TempAzubiBerichtsheft.Views
             AddHandler Me.normalButton.Click, AddressOf Me.normalButton_Click
 
             '
-            ' richTextEditor
+            ' richTextAusbildungsplatz
             '
-            Me.richTextEditor.Dock = DockStyle.Fill
-            Me.richTextEditor.Location = New Point(0, 0)
-            Me.richTextEditor.Name = "richTextEditor"
-            Me.richTextEditor.Size = New Size(280, 500)
-            Me.richTextEditor.TabIndex = 15
+            Me.richTextAusbildungsplatz.Dock = DockStyle.Fill
+            Me.richTextAusbildungsplatz.Location = New Point(0, 0)
+            Me.richTextAusbildungsplatz.Name = "richTextAusbildungsplatz"
+            Me.richTextAusbildungsplatz.Size = New Size(280, 500)
+            Me.richTextAusbildungsplatz.TabIndex = 15
+
+            Me.richTextBerufsschule.Dock = DockStyle.Fill
+            Me.richTextBerufsschule.Location = New Point(0, 0)
+            Me.richTextBerufsschule.Name = "richTextBerufsschule"
+            Me.richTextBerufsschule.Size = New Size(280, 500)
+            Me.richTextBerufsschule.TabIndex = 16
 
             '
             ' MainView
@@ -349,46 +329,41 @@ Namespace TempAzubiBerichtsheft.Views
             Me.AutoScaleDimensions = New SizeF(7.0F, 15.0F)
             Me.AutoScaleMode = AutoScaleMode.Font
             Me.ClientSize = New Size(859, 560)
-            Me.Controls.Add(Me.btnLoad)
-            Me.Controls.Add(Me.btnSave)
-            Me.Controls.Add(Me.btnSend)
-            Me.Controls.Add(Me.btnClose)
-            Me.Controls.Add(Me.comboBoxRole)
-            Me.Controls.Add(Me.comboBoxYear)
-            Me.Controls.Add(Me.comboBoxWeek)
-            Me.Controls.Add(Me.textBoxName)
-            'Me.Controls.Add(Me.panelLeft)
-            'Me.Controls.Add(Me.panelMiddle)
-            'Me.Controls.Add(Me.panelRight)
+            Me.StartPosition = FormStartPosition.CenterScreen
+
             Me.Controls.Add(Me.tlpPanel)
-            Me.Controls.Add(Me.labelRole)
+
             Me.Controls.Add(Me.labelYear)
             Me.Controls.Add(Me.labelWeek)
             Me.Controls.Add(Me.labelName)
-            Me.tlpPanel.Controls.Add(pdfViewerRahmen, 0, 0)
-            Me.tlpPanel.Controls.Add(pdfViewerAusbildungsNachweis, 1, 0)
-            Me.tlpPanel.Controls.Add(tlpRichtext, 2, 0)
+
+            Me.tlpPanel.Controls.Add(Me.treeViewBerichte, 0, 0)
+            Me.tlpPanel.Controls.Add(pdfViewerRahmen, 1, 0)
+            Me.tlpPanel.Controls.Add(pdfViewerAusbildungsNachweis, 2, 0)
+            Me.tlpPanel.Controls.Add(Me.tlpRichtext, 3, 0)
+            Me.tlpPanel.Controls.Add(Me.abschluss, 0, 1)
+            Me.tlpPanel.SetColumnSpan(Me.abschluss, 4)
             'Me.panelLeft.Controls.Add(Me.pdfViewer)
-            'Me.panelMiddle.Controls.Add(Me.richTextEditor)
+            'Me.panelMiddle.Controls.Add(Me.richTextAusbildungsplatz)
             Me.Name = "MainView"
             Me.Text = "RA-MICRO Cockpit Berichtsheft"
+            Me.Icon = New Icon(GetResourcePath("Azubi-Berichtsheft_3216.ico"))
             Me.ResumeLayout(False)
             Me.PerformLayout()
 
         End Sub
 
-        Private Sub btnClose_Click(sender As Object, e As EventArgs)
-            Me.Close()
-        End Sub
+
+
 
         Private Sub normalButton_Click(obj As Object, e As EventArgs)
-            Dim currentFont As Font = richTextEditor.SelectionFont
+            Dim currentFont As Font = richTextAusbildungsplatz.SelectionFont
             Dim newFontStyle As FontStyle = FontStyle.Regular
-            richTextEditor.SelectionFont = New Font(currentFont.FontFamily, currentFont.Size, newFontStyle)
+            richTextAusbildungsplatz.SelectionFont = New Font(currentFont.FontFamily, currentFont.Size, newFontStyle)
         End Sub
 
         Private Sub italicButton_Click(obj As Object, e As EventArgs)
-            Dim currentFont As Font = richTextEditor.SelectionFont
+            Dim currentFont As Font = richTextAusbildungsplatz.SelectionFont
             Dim newFontStyle As FontStyle
 
             If currentFont.Italic = True Then
@@ -397,28 +372,28 @@ Namespace TempAzubiBerichtsheft.Views
                 newFontStyle = FontStyle.Italic
             End If
 
-            richTextEditor.SelectionFont = New Font(currentFont.FontFamily, currentFont.Size, newFontStyle)
+            richTextAusbildungsplatz.SelectionFont = New Font(currentFont.FontFamily, currentFont.Size, newFontStyle)
         End Sub
 
         Private Sub fontSizeNumericUpDown_ValueChanged(obj As Object, e As EventArgs)
-            Dim currentFont As Font = richTextEditor.SelectionFont
-            richTextEditor.SelectionFont = New Font(currentFont.FontFamily, fontSizeNumericUpDown.Value, currentFont.Style)
+            Dim currentFont As Font = richTextAusbildungsplatz.SelectionFont
+            richTextAusbildungsplatz.SelectionFont = New Font(currentFont.FontFamily, fontSizeNumericUpDown.Value, currentFont.Style)
         End Sub
         Private Sub colorPickerButton_Click(sender As Object, e As EventArgs)
             Dim colorDialog As New ColorDialog()
             If colorDialog.ShowDialog() = DialogResult.OK Then
-                richTextEditor.SelectionColor = colorDialog.Color
+                richTextAusbildungsplatz.SelectionColor = colorDialog.Color
             End If
         End Sub
 
         Private Sub fontComboBox_SelectedIndexChanged(obj As Object, e As EventArgs)
-            Dim currentFont As Font = richTextEditor.SelectionFont
+            Dim currentFont As Font = richTextAusbildungsplatz.SelectionFont
             Dim newFontFamily As FontFamily = New FontFamily(fontComboBox.SelectedItem.ToString())
-            richTextEditor.SelectionFont = New Font(newFontFamily, currentFont.Size, currentFont.Style)
+            richTextAusbildungsplatz.SelectionFont = New Font(newFontFamily, currentFont.Size, currentFont.Style)
         End Sub
 
         Private Sub boldButton_Click(sender As Object, e As EventArgs)
-            Dim currentFont As Font = richTextEditor.SelectionFont
+            Dim currentFont As Font = richTextAusbildungsplatz.SelectionFont
             Dim newFontStyle As FontStyle
 
             If currentFont.Bold = True Then
@@ -427,50 +402,44 @@ Namespace TempAzubiBerichtsheft.Views
                 newFontStyle = FontStyle.Bold
             End If
 
-            richTextEditor.SelectionFont = New Font(currentFont.FontFamily, currentFont.Size, newFontStyle)
-        End Sub
-
-        ' Event-Handler für die Buttons
-        Private Sub btnLoad_Click(sender As Object, e As EventArgs)
-            Try
-                Dim openFileDialog As New OpenFileDialog()
-                openFileDialog.Filter = "PDF-Dateien|*.pdf"
-                openFileDialog.Title = "PDF-Datei öffnen"
-                If openFileDialog.ShowDialog() = DialogResult.OK Then
-                    pdfViewerAusbildungsNachweis.LoadDocument(openFileDialog.FileName)
-                    MessageBox.Show("PDF-Dokument erfolgreich geladen")
-                End If
-
-            Catch ex As Exception
-                MessageBox.Show("Fehler beim Laden des PDF-Dokuments: " & ex.Message)
-            End Try
-        End Sub
-
-        Private Sub btnSave_Click(sender As Object, e As EventArgs)
-            Try
-                'pdfViewer.SaveDocument("path_to_save_pdf_file.pdf")
-                MessageBox.Show("PDF-Dokument erfolgreich gespeichert")
-            Catch ex As Exception
-                MessageBox.Show("Fehler beim Speichern des PDF-Dokuments: " & ex.Message)
-            End Try
+            richTextAusbildungsplatz.SelectionFont = New Font(currentFont.FontFamily, currentFont.Size, newFontStyle)
         End Sub
 
 
 
-        Private Sub btnSend_Click(sender As Object, e As EventArgs)
-            ' Beispielhafter Code zum Senden des PDF-Dokuments
-            MessageBox.Show("PDF-Dokument erfolgreich gesendet")
-        End Sub
 
-        Private Sub MainView_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-            Application.Exit()
 
-        End Sub
+
+
+
 
         Private Sub MainView_Load(sender As Object, e As EventArgs) Handles Me.Load
             fontComboBox.Text = "Segoe UI"
             fontSizeNumericUpDown.Value = 12
+            pdfViewerRahmen.LoadPdf(pfadZurVorlage1)
+            pdfViewerAusbildungsNachweis.LoadPdf(pfadZurVorlage2)
 
+
+        End Sub
+
+        Private Sub OnPdfMouseClick(sender As Object, e As MouseEventArgs)
+            If richTextAusbildungsplatz.Text = "" Then
+                'MessageBox.Show("Bitte geben Sie einen Text ein")
+                Return
+            Else
+
+            End If
+            If e.Button = MouseButtons.Left Then
+                Dim pageNumber = pdfViewer.GetPageNumberAtPosition '.GetPageNumberAtPosition(e.X, e.Y)
+                Dim pdfCoordinates = pdfViewer.GetPdfCoordinates(e) '.X, e.Y)
+                Dim text = richTextAusbildungsplatz.Text
+                pdfEditor.AddTextToPdf("path\to\your\document.pdf", "path\to\your\output.pdf", text, pageNumber, pdfCoordinates.X, pdfCoordinates.Y)
+                pdfViewer.LoadPdf("path\to\your\output.pdf") ' Reload the PDF to see the changes
+            End If
+        End Sub
+
+        Private Sub abschluss_ButtonClick(sender As Object, e As EventArgs) Handles abschluss.ButtonAbbruchClick
+            Me.Close()
         End Sub
     End Class
 End Namespace

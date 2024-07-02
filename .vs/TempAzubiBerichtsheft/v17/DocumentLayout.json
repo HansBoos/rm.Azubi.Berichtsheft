@@ -3,8 +3,43 @@
   "WorkspaceRootPath": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\views\\mainview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\views\\mainview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\views\\registerview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\views\\registerview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\views\\loginview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\views\\loginview.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\data\\ausbildungsberichtrepository.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\data\\ausbildungsberichtrepository.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\viewmodels\\mainviewmodel.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\viewmodels\\mainviewmodel.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\models\\ausbildungsbericht.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\models\\ausbildungsbericht.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\data\\benutzerrepository.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\data\\benutzerrepository.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\models\\benutzer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\models\\benutzer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HBoos\\source\\repos\\rm.ChatGPTiumViewerEditor\\rm.ChatGPTiumViewerEditor\\PdfViewerControl.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|c:\\users\\hboos\\source\\repos\\tempazubiberichtsheft\\tempazubiberichtsheft\\tempazubiberichtsheft.vbproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{8707D173-502D-43A8-A13F-FBCEC40403BD}|TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj|solutionrelative:tempazubiberichtsheft\\tempazubiberichtsheft.vbproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +49,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,16 +97,123 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginView.vb",
+              "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\LoginView.vb",
+              "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Views\\LoginView.vb",
+              "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\LoginView.vb",
+              "RelativeToolTip": "TempAzubiBerichtsheft\\Views\\LoginView.vb",
+              "ViewState": "AQIAACoAAAAAAAAAAAApwEQAAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-06-26T06:40:23.183Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\.gitignore",
-              "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\.gitignore",
-              "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\.gitignore",
-              "RelativeToolTip": "TempAzubiBerichtsheft\\.gitignore",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-06-26T06:35:53.793Z",
+              "Title": "MainView.vb",
+              "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\MainView.vb",
+              "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Views\\MainView.vb",
+              "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\MainView.vb",
+              "RelativeToolTip": "TempAzubiBerichtsheft\\Views\\MainView.vb",
+              "ViewState": "AQIAAHYBAAAAAAAAAAAjwIABAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-06-26T06:40:51.606Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegisterView.vb",
+              "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\RegisterView.vb",
+              "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Views\\RegisterView.vb",
+              "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Views\\RegisterView.vb",
+              "RelativeToolTip": "TempAzubiBerichtsheft\\Views\\RegisterView.vb",
+              "ViewState": "AQIAALkAAAAAAAAAAAAxwNAAAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-06-27T15:16:18.621Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainViewModel.vb",
+              "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\ViewModels\\MainViewModel.vb",
+              "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\ViewModels\\MainViewModel.vb",
+              "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\ViewModels\\MainViewModel.vb",
+              "RelativeToolTip": "TempAzubiBerichtsheft\\ViewModels\\MainViewModel.vb",
+              "ViewState": "AQIAABkAAAAAAAAAAIA7wCMAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-06-26T06:47:56.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TempAzubiBerichtsheft",
+              "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj",
+              "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj",
+              "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj",
+              "RelativeToolTip": "TempAzubiBerichtsheft\\TempAzubiBerichtsheft.vbproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003380|",
+              "WhenOpened": "2024-06-26T06:53:03.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PdfViewerControl.vb",
+              "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\rm.ChatGPTiumViewerEditor\\rm.ChatGPTiumViewerEditor\\PdfViewerControl.vb",
+              "RelativeDocumentMoniker": "..\\rm.ChatGPTiumViewerEditor\\rm.ChatGPTiumViewerEditor\\PdfViewerControl.vb",
+              "ToolTip": "C:\\Users\\HBoos\\source\\repos\\rm.ChatGPTiumViewerEditor\\rm.ChatGPTiumViewerEditor\\PdfViewerControl.vb",
+              "RelativeToolTip": "..\\rm.ChatGPTiumViewerEditor\\rm.ChatGPTiumViewerEditor\\PdfViewerControl.vb",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAhwBoAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-06-26T13:53:27.822Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BenutzerRepository.vb",
+              "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Data\\BenutzerRepository.vb",
+              "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Data\\BenutzerRepository.vb",
+              "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Data\\BenutzerRepository.vb",
+              "RelativeToolTip": "TempAzubiBerichtsheft\\Data\\BenutzerRepository.vb",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-06-27T14:15:26.446Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Benutzer.vb",
+              "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Models\\Benutzer.vb",
+              "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Models\\Benutzer.vb",
+              "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Models\\Benutzer.vb",
+              "RelativeToolTip": "TempAzubiBerichtsheft\\Models\\Benutzer.vb",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAvwA4AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-06-27T14:53:30.881Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Ausbildungsbericht.vb",
+              "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Models\\Ausbildungsbericht.vb",
+              "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Models\\Ausbildungsbericht.vb",
+              "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Models\\Ausbildungsbericht.vb",
+              "RelativeToolTip": "TempAzubiBerichtsheft\\Models\\Ausbildungsbericht.vb",
+              "ViewState": "AQIAAAYAAAAAAAAAAAA1wBAAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-07-01T11:19:18.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AusbildungsberichtRepository.vb",
+              "DocumentMoniker": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Data\\AusbildungsberichtRepository.vb",
+              "RelativeDocumentMoniker": "TempAzubiBerichtsheft\\Data\\AusbildungsberichtRepository.vb",
+              "ToolTip": "C:\\Users\\HBoos\\source\\repos\\TempAzubiBerichtsheft\\TempAzubiBerichtsheft\\Data\\AusbildungsberichtRepository.vb",
+              "RelativeToolTip": "TempAzubiBerichtsheft\\Data\\AusbildungsberichtRepository.vb",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABsAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-07-01T11:20:59.359Z"
             }
           ]
         }
