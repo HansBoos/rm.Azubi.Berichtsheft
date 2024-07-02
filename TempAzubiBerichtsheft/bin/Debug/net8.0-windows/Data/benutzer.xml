@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBenutzer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Benutzer>
+    <BenutzerID>0</BenutzerID>
+    <Name>hans</Name>
+    <Rolle />
+    <LoginDaten />
+    <Password />
+  </Benutzer>
+  <Benutzer>
+    <BenutzerID>0</BenutzerID>
+    <Name>kurt</Name>
+    <Rolle />
+    <LoginDaten>RA-Fachangestellte/r</LoginDaten>
+    <Password />
+  </Benutzer>
+  <Benutzer>
+    <BenutzerID>0</BenutzerID>
+    <Name>frieda</Name>
+    <Rolle>frieda</Rolle>
+    <LoginDaten>Reno-Fachangestellte/r</LoginDaten>
+    <Password>frieda</Password>
+  </Benutzer>
+  <Benutzer>
+    <BenutzerID>0</BenutzerID>
+    <Name>benny</Name>
+    <Rolle>benny</Rolle>
+    <LoginDaten>RA-Fachangestellte/r</LoginDaten>
+    <Password>benny</Password>
+  </Benutzer>
+</ArrayOfBenutzer>
