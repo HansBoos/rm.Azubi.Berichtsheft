@@ -1,10 +1,10 @@
 ﻿Imports System.Windows.Forms
 Imports DevExpress.XtraPdfViewer
-Imports TempAzubiBerichtsheft.ViewModels
+Imports DevExpress.Pdf
 Imports System.Drawing
 Imports TempAzubiBerichtsheft.TempAzubiBerichtsheft.ViewModels
 Imports System.IO
-Imports rm.ChatGPTiumViewerEditor
+'Imports rm.ChatGPTiumViewerEditor
 Imports System.Runtime.InteropServices
 Imports TempAzubiBerichtsheft.TempAzubiBerichtsheft.Models
 Imports System.Collections.Generic
@@ -21,8 +21,9 @@ Namespace TempAzubiBerichtsheft.Views
 
         Private components As System.ComponentModel.IContainer
 
-        Private pdfViewer As PdfViewerControl
-        Private pdfEditor As PdfEditor
+        Private pdfViewer As PdfViewer ' PdfViewerControl
+        Private pdfEditor As PdfDocumentProcessor ' PdfEditor
+
 
         Dim docOrigin As String
         Dim docDestination As String
@@ -36,8 +37,8 @@ Namespace TempAzubiBerichtsheft.Views
         Private labelYear As Label
         Private labelWeek As Label
         Private labelName As Label
-        Private pdfViewerRahmen As rm.ChatGPTiumViewerEditor.PdfViewerControl 'As PdfViewer
-        Private pdfViewerAusbildungsNachweis As rm.ChatGPTiumViewerEditor.PdfViewerControl 'As PdfViewer
+        Private pdfViewerRahmen As PdfViewer 'rm.ChatGPTiumViewerEditor.PdfViewerControl 'As PdfViewer
+        Private pdfViewerAusbildungsNachweis As PdfViewer 'rm.ChatGPTiumViewerEditor.PdfViewerControl 'As PdfViewer
 
         Private richTextAusbildungsplatz As RichTextBox
         Private richTextBerufsschule As RichTextBox
@@ -150,8 +151,10 @@ Namespace TempAzubiBerichtsheft.Views
             Me.labelYear = New Label()
             Me.labelWeek = New Label()
             Me.labelName = New Label()
-            Me.pdfViewerRahmen = New rm.ChatGPTiumViewerEditor.PdfViewerControl() ' New PdfViewer()
-            Me.pdfViewerAusbildungsNachweis = New PdfViewerControl() ' New PdfViewer()
+            Me.pdfViewerRahmen = New PdfViewer()
+            Me.pdfViewerAusbildungsNachweis = New PdfViewer()
+            '  Me.pdfViewerRahmen = New rm.ChatGPTiumViewerEditor.PdfViewerControl() ' New PdfViewer()
+            '  Me.pdfViewerAusbildungsNachweis = New PdfViewerControl() ' New PdfViewer()
             Me.richTextAusbildungsplatz = New RichTextBox()
             Me.richTextBerufsschule = New RichTextBox()
             Me.cmbFontFamilyAusbildungsplatz = New ComboBox()
@@ -451,9 +454,10 @@ Namespace TempAzubiBerichtsheft.Views
         Private Sub MainView_Load(sender As Object, e As EventArgs) Handles Me.Load
             'fontComboBox.Text = "Segoe UI"
             'fontSizeNumericUpDown.Value = 12
-            pdfViewerRahmen.LoadPdf(pfadZurVorlage1)
-            pdfViewerAusbildungsNachweis.LoadPdf(pfadZurVorlage2)
-
+            'pdfViewerRahmen.LoadPdf(pfadZurVorlage1)
+            'pdfViewerAusbildungsNachweis.LoadPdf(pfadZurVorlage2)
+            pdfViewerRahmen.LoadDocument(pfadZurVorlage1)
+            pdfViewerAusbildungsNachweis.LoadDocument(pfadZurVorlage2)
 
         End Sub
 

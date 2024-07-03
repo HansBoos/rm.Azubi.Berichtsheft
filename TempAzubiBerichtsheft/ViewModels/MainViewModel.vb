@@ -1,16 +1,16 @@
 ﻿Imports System.ComponentModel
-Imports TempAzubiBerichtsheft.Models
-Imports TempAzubiBerichtsheft.TempAzubiBerichtsheft.Data
 Imports TempAzubiBerichtsheft.TempAzubiBerichtsheft.Models
+Imports TempAzubiBerichtsheft.TempAzubiBerichtsheft.Data
+
 Imports TempAzubiBerichtsheft.TempAzubiBerichtsheft.ViewModels
 
-'Namespace TempAzubiBerichtsheft.ViewModels
-Public Class MainViewModel
-    Inherits BaseViewModel
-    Implements INotifyPropertyChanged
+Namespace TempAzubiBerichtsheft.ViewModels
+    Public Class MainViewModel
+        Inherits BaseViewModel
+        Implements INotifyPropertyChanged
 
 
-    Private _benutzer As Benutzer
+        Private _benutzer As Benutzer
 
         Public Property Ausbildungsberichte As New List(Of Ausbildungsbericht)
 
@@ -54,4 +54,4 @@ Public Class MainViewModel
 
         Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
     End Class
-'End Namespace
+End Namespace
